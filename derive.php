@@ -24,13 +24,6 @@ create_trailing_var ( "PE_90th_5yrs", "PE", 20, "Q", "90th", 1 );
 
 create_trailing_var ( "PE_10th_5yrs", "PE", 20, "Q", "10th", 1 );
 
-
-
-
-
-
-
-
 create_var ( "shares_buyback",
 
 	( get_financial( -1, "shares_outstanding" ) > get_financial( 0, "shares_outstanding" ) )
