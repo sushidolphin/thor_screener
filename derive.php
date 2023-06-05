@@ -2,12 +2,17 @@
 
 /*
 
+Column fields starting with underscore _ have been dowloaded from data provider.
+Column fields starting with x_ have been derived with proprietary functions.
+
 row_id
 object_id
 fiscal_period
 period_ending_on
 valid_from
 valid_until
+
+
 _revenue
 _cost_of_goods_sold
 _gross_profit
@@ -94,6 +99,10 @@ _book_value_per_share
 _operating_cash_flow_per_share
 _free_cash_flow_per_share
 _goodwill_and_intangible_assets
+_pretax_income
+_pretax_profit_margin
+
+
 x_PE
 x_price_median
 x_shares_buyback
@@ -102,8 +111,6 @@ x_net_income_TTM
 x_net_cash_flow_TTM
 x_share_holder_equity_TTM
 x_PE_90th_5yrs
-_pretax_income
-_pretax_profit_margin
 x_PE_10th_5yrs
 
 */
