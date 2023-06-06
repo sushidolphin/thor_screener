@@ -1,2 +1,2 @@
 # THOR SCREENER
-Value investing with AI
+Value investing with DL
