@@ -12,8 +12,7 @@ function create_var ( $name, $value, $save )
 		
 		( 
 			
-			$settings[ "recalculate_derived_vars" ] == 1
-			
+			$settings[ "recalculate_derived_vars" ] == 1			
 			
 			OR
 			
@@ -24,8 +23,7 @@ function create_var ( $name, $value, $save )
 				
 				match_name_to_column( $name , $settings[ "recalculate_derived_vars" ] ) != null
 			)
-								
-			
+											
 		)		
 		
 	) $financial_report[ $derived_fields_prefix . $name ] = $value;

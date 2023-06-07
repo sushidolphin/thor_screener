@@ -1,10 +1,13 @@
 <?php
 
-function create_trailing_var ( $name, $trailing_field, $number_of_elements, $financial_report_type, $calc, $save )
+function create_trailing_var ( $name, $trailing_field, $number_of_elements, $calc, $save )
 {
+	global $freq;
 	
-	if ( get_financial( 0, "fiscal_period" ) == $financial_report_type )
+	if ( get_financial( 0, $trailing_field ) != null AND $number_of_elements > 1 )
 	{
+	
+		if ( $name == null ) $name = $trailing_field . "_" . $calc . "_T" . $number_of_elements . $freq;
 
 		$trailing_array = trailing ( $name , get_financial( 0, $trailing_field ) , $number_of_elements );
 		
@@ -20,14 +23,20 @@ function create_trailing_var ( $name, $trailing_field, $number_of_elements, $fin
 			
 			else if ( $calc == "max" ) $value = return_max( $trailing_array );
 			
+			else if ( $calc == "SD" ) $value = standard_dev( $trailing_array );
+			
 			else if ( strpos( $calc, "th" ) != false ) $value = percentiles( $trailing_array, str_replace( "th", "", $calc ) );
+			
+			else if ( $calc == null ) return $trailing_array;
 
 			if ( isset( $value ) ) create_var ( $name, $value, $save );
 			
 			
 		}
+		else return null;
 	
 	}
+	else return null;
 }
 
 
