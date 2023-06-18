@@ -1,2 +1,5 @@
-# THOR SCREENER
-Value investing with DL
+THOR SCREENER
+
+Harnessing Deep Learning to predict future business performance
+
+https://valuestockpicker.com/
