@@ -11,8 +11,11 @@
 	calculate_growth ( FIELD_NAME , compare_with_X_report_ago , 1 = save );
 
 	calculate_consistency ( FIELD_NAME , 1 for increase or -1 for decrease, number of trailing values, 1 = save );
+	
+	compare_var_to_sector_or_industry ( FIELD_NAME, above or below, 25th 50th 75th or mean, sectory or industry, 1 = save );
 
 */
+
 
 
 
@@ -21,6 +24,15 @@
 // Median price during reference quarter
 				
 create_var( "price_median", calculate_median( $temp[ "price_data_within_period" ][ "price_median" ] ), 1 );
+
+
+
+
+
+
+// Is this a bank?
+
+create_var( "not_bank", ( get_security_info( "sector_desc" ) == "Finance" ) ? 0 : 1 , 1 );
 
 
 
@@ -93,6 +105,8 @@ create_var ( "EPS_TTM_growth_greater_than_net_income_TTM_growth",
 
 
 
+
+
 // TTM VALUES
 
 create_trailing_var ( "eps_TTM", "eps_earnings_per_share", 4, "sum", 1 );
@@ -130,6 +144,22 @@ create_var( "ROE_2",
 	: null 
 	
 , 1 );
+
+
+
+
+
+
+
+
+// ROE in upper quartile within industry
+
+compare_var_to_sector_or_industry ( "ROE_2", "above", "median", "sector", 1 );
+
+create_trailing_var ( null, "x_ROE_2_above_sector_median", 20, "sum", 1 );
+
+
+
 
 
 
@@ -287,7 +317,6 @@ create_var( "net_income_TTM_absolute_change_28Q", get_financial( 0, "net_income_
 // Absolute change in invested_capital as compared to 7 years ago
 
 create_var( "invested_capital_TTM_absolute_change_28Q", get_financial( 0, "invested_capital_TTM" ) - get_financial( -28, "invested_capital_TTM" ) , 1 );
-
 
 
 
