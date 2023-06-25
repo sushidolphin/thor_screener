@@ -29,7 +29,7 @@ function create_trailing_var ( $name, $trailing_field, $number_of_elements, $cal
 			
 			else if ( $calc == null ) return $trailing_array;
 
-			if ( isset( $value ) ) create_var ( $name, $value, $save );
+			if ( isset( $value ) ) return create_var ( $name, $value, $save );
 			
 			
 		}
